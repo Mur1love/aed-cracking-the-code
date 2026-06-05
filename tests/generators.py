@@ -1,6 +1,8 @@
+from data_structures.tree import Tree
 from functools import lru_cache
 from random import choice, randint, shuffle
 from typing import Dict, List, Tuple
+
 
 import big_o
 
@@ -158,16 +160,17 @@ def generate_weighted_graph(
 def generate_tree_values(
     quantity: int,
 ) -> List[int]:
-    """
-    Gera valores para construir árvores.
-
-    Exemplo:
-
-    [5, 3, 8, 1, 4]
-    """
-
     values = list(range(quantity))
 
     shuffle(values)
 
     return values
+
+
+def generate_tree(quantity: int):
+    tree = Tree()
+
+    for value in range(quantity):
+        tree.insert_with_recursion(value)
+
+    return tree.get_root()
